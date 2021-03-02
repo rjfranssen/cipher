@@ -1,0 +1,12 @@
+name: cipher
+title: cipher
+username:
+account: rjfranssen
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3682231
+bundleId: 4259347
+url: https://rjfranssen.shinyapps.io/cipher/
+when: 1614051568.12333
+asMultiple: FALSE
+asStatic: FALSE

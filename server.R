@@ -140,7 +140,7 @@ function(input, output, session) {
         combined_freq$expected_count <- round(combined_freq$expected_freq * sum(combined_freq$actual_counts), 1)
 
         # Create plot
-        plt <- ggplot(data = combined_freq, aes(text = paste0("Letter:", letters, "<br>",
+        plt <- ggplot(data = combined_freq, aes(text = paste0(letters, "<br>",
                                                              "Actual Freq:", actual_freq, "<br>",
                                                              "Expected Freq:", expected_freq))) +
 
@@ -166,11 +166,17 @@ function(input, output, session) {
             scale_fill_viridis_d(option = "viridis") +
             labs(x = ""
                  , y = "Frequency"
-                 , title = "Frequency Plot") +
+                 , title = ""
+                 ) +
             #ylim(0, 0.25) +
             theme(legend.position = "none")
 
-        ggplotly(plt, tooltip = "text")
+        ggplotly(plt, tooltip = "text") #%>%
+            # layout(title = list(text = paste0('Frequency Plot',
+            #                                   '<br>',
+            #                                   '<sup>',
+            #                                   'Gray boxes represent the expected frequency of each letter',
+            #                                   '</sup>')))
 
     })
 

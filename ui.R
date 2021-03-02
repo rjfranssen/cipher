@@ -129,29 +129,44 @@ navbarPage(
              sidebarLayout(
                   sidebarPanel(
 
+                      textAreaInput(
+                          inputId = "word_freq_text",
+                          label = "Type in some text, and we'll plot the frequency of each letter",
+                          placeholder = "There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory mentioned, which states that this has already happened! - The Hitchiker's Guide to the Galaxy",
+                          value = "There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory mentioned, which states that this has already happened! - The Hitchhiker's Guide to the Galaxy",
+                          width = "100%",
+                          height = 300
+                      )
+
                  ),
 
                  mainPanel(
                      fluidRow(
 
-                         box(width=10,
-                             title = "Frequency Plot",
+                         box(width = 12,
+                             title = "Letter Frequency Plot",
+                             tags$i("Gray boxes represent the expected frequency of each letter"),
                              solidHeader = TRUE,
                              #tags$h4("Encrypt with Shift Cipher"),
                              status = "primary", # primary (blue), success (green), info (blue), warning (orange), danger (red)
 
-                             textAreaInput(
-                                 inputId = "word_freq_text",
-                                 label = "Type in some text, and we'll plot the frequency of each letter",
-                                 placeholder = "There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory mentioned, which states that this has already happened!",
-                                 value = "There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory mentioned, which states that this has already happened!",
-                                 width = "100%",
-                                 height = 125
-                             ),
-
                              # Plot the frequency plot
 
-                            plotlyOutput("word_freq_plot")
+                            plotlyOutput("word_freq_plot", height = 300)
+
+                         )
+
+                     ),
+
+                     fluidRow(
+
+                         box(width = 10,
+                             title = "Predicting Letters based on Frequency",
+                             solidHeader = FALSE,
+
+                             tags$i("If your text is encrypted, we'll take a crack at decrypting it based solely on the occurrence of each letter. We only have to get a couple right to start solving it"),
+                             status = "primary" # primary (blue), success (green), info (blue), warning (orange), danger (red)
+
 
                          )
 
